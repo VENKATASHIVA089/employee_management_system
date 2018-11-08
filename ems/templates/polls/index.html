@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content%}
+	<h2>List of {{title}}</h2>
+		{% if questions %}
+			<ul class="list-group">
+				{% for question in questions %}
+					<li class="list-group-item">
+						{{forloop.counter}}. <a href="{% url 'poll_details' question.id %}">{{question.title}}</a>
+					</li>
+				{% endfor %}
+			</ul>	
+		{% else %}
+			<p>There is no questions</p>
+		{% endif %}
+{% endblock %}

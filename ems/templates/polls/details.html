@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content%}
+	<h2>Details Page</h2>
+	<h3>{{questions.title}}</h3>
+	<table class="table">
+		<thead>
+			<tr>
+			<th scope="column">Choices</th>
+			<th scope="column">Votes</th>
+			</tr>
+		</thead>
+	{% for choice in questions.choices %}
+		<tr>
+			<td><a href="{% url 'single_poll' questions.id %}">{{choice.text}}</a></td><td><span class="badge badge-pill badge-primary">{{choice.votes}}</span></td>
+		</tr>
+	{% empty %}
+			<div class="alert alert-primary" role="alert">
+  				There is no Choices available !!
+			</div>
+	{% endfor %}
+	</table>
+	<p>Poll created by  <b><em>{{questions.created_by}}</em></b></p>
+{% endblock %}

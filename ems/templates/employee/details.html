@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content%}
+	<h2>Details Page</h2>
+	<h3>{{user.username}}</h3>
+	{% if user.profile %}
+		<table class="table">
+			<tr>
+				<td>First Name: </td>
+				<td><b><em>{{user.first_name}}</em></b></td>
+			</tr>
+			<tr>
+				<td>Last Name :</td>
+				<td><b><em>{{user.last_name}}</em></b></td>
+			</tr>
+			<tr>
+				<td>Designation: </td>
+				<td><b><em>{{user.profile.designation}}</em></b></td>
+			</tr>
+			<tr>
+				<td>Salary : </td>
+				<td><b><em>{{user.profile.salary}}</em></b></td>
+			</tr>
+		</table>
+		<p>It is <b><em>{{user}}</em></b>'s profile</p>
+	<button><a href="{% url 'employee_edit' user.id %}">Edit</a></button>
+	<button><a href="{% url 'employee_delete' user.id %}">Delete</a></button>
+	{% else %}
+		<p>There is no profile available</p>
+	{% endif %}
+{% endblock %}
